@@ -3,16 +3,12 @@
 > C++ Implementations of Rate Monotonic Scheduling (RMS) and Earliest Deadline First (EDF) Algorithms
 > Simulate process scheduling, analyze deadlines, and measure performance.
 
----
-
 ## 🛠️ Tech Stack
 
-* **Language:** C++
-* **Compiler:** g++ (GNU Compiler Collection)
-* **Platform:** Linux, Windows, macOS
-* **Output:** Text-based logs and statistics files
-
----
+* Language: C++
+* Compiler: g++ (GNU Compiler Collection)
+* Platform: Linux, Windows, macOS
+* Output: Text-based logs and statistics files
 
 ## 📁 Repository Contents
 
@@ -20,8 +16,6 @@
 | ------------------------ | ----------------------------- |
 | RMS_ProcessScheduler.cpp | RMS scheduling implementation |
 | EDF_ProcessScheduler.cpp | EDF scheduling implementation |
-
----
 
 ## ⚡ Quick Start
 
@@ -56,8 +50,6 @@ p.exe
 | RM-Stats.txt | RMS statistics            |
 | RMS-Log.txt  | RMS process execution log |
 
----
-
 ### 🔵 Run EDF Code
 
 1. Compile:
@@ -87,8 +79,6 @@ p.exe
 | EDF-Stats.txt | EDF statistics            |
 | EDF-Log.txt   | EDF process execution log |
 
----
-
 ## 📊 Process Structure
 
 Each process has the following key attributes:
@@ -100,8 +90,6 @@ Each process has the following key attributes:
 | Occur          | Number of times the process has executed    |
 | Remaining Time | Time left for process to complete execution |
 
----
-
 ## ⚙️ Key Functions
 
 * setup_process(y) — Move process y to its next period, updating all fields
@@ -109,8 +97,6 @@ Each process has the following key attributes:
 * can_prempt_and_deadline(x, y) — Determines if process x can preempt y without missing its deadline
 * preempt(x) — Returns the index of a process that can preempt x, or -1
 * process_selector() — Selects the next process based on priority (RMS) or earliest deadline (EDF)
-
----
 
 ## 📝 RMS Algorithm
 
@@ -120,8 +106,6 @@ Each process has the following key attributes:
 * Preemption and deadline checks ensure process deadlines are not missed
 * Process selection chooses the highest priority ready process
 
----
-
 ## 📝 EDF Algorithm
 
 * Priority: Earliest deadline has higher priority
@@ -129,15 +113,11 @@ Each process has the following key attributes:
 * Preemption and deadline checks similar to RMS
 * Process selection chooses the ready process with earliest deadline
 
----
-
 ## 📊 Analysis
 
 * RMS may have more deadlines missed when high-period processes are skipped
 * EDF may have more waiting time if it executes long processes near their deadlines
 * Graph analysis shows RMS can outperform EDF in certain scenarios and vice versa depending on process parameters
-
----
 
 ## 🖇️ Notes
 
