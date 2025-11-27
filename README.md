@@ -5,13 +5,21 @@
 
 ---
 
+## 🛠️ Tech Stack
+
+* **Language:** C++
+* **Compiler:** g++ (GNU Compiler Collection)
+* **Platform:** Linux, Windows, macOS
+* **Output:** Text-based logs and statistics files
+
+---
+
 ## 📁 Repository Contents
 
-| File                    | Description                              |
-| ----------------------- | ---------------------------------------- |
-| inp-params.txt          | Input file containing process parameters |
-| Assgn2-RMSCS19B1026.cpp | RMS scheduling implementation            |
-| Assgn2-EDFCS19B1026.cpp | EDF scheduling implementation            |
+| File                     | Description                   |
+| ------------------------ | ----------------------------- |
+| RMS_ProcessScheduler.cpp | RMS scheduling implementation |
+| EDF_ProcessScheduler.cpp | EDF scheduling implementation |
 
 ---
 
@@ -24,7 +32,7 @@ Make sure all files are in the same directory before running.
 1. Compile:
 
 ```
-g++ Assgn2-RMSCS19B1026.cpp -o p
+g++ RMS_ProcessScheduler.cpp -o p
 ```
 
 2. Execute:
@@ -55,7 +63,7 @@ p.exe
 1. Compile:
 
 ```
-g++ Assgn2-EDFCS19B1026.cpp -o p
+g++ EDF_ProcessScheduler.cpp -o p
 ```
 
 2. Execute:
@@ -74,7 +82,65 @@ p.exe
 
 3. Output:
 
-| File          | Purpose        |
-| ------------- | -------------- |
-| EDF-Stats.txt | EDF statistics |
-| EDF-Log       |                |
+| File          | Purpose                   |
+| ------------- | ------------------------- |
+| EDF-Stats.txt | EDF statistics            |
+| EDF-Log.txt   | EDF process execution log |
+
+---
+
+## 📊 Process Structure
+
+Each process has the following key attributes:
+
+| Attribute      | Description                                 |
+| -------------- | ------------------------------------------- |
+| Available Time | Time at which process is ready to execute   |
+| Deadline Time  | Time by which process must finish execution |
+| Occur          | Number of times the process has executed    |
+| Remaining Time | Time left for process to complete execution |
+
+---
+
+## ⚙️ Key Functions
+
+* setup_process(y) — Move process y to its next period, updating all fields
+* isdeadlinemissed(y) — Checks if process y will miss its deadline
+* can_prempt_and_deadline(x, y) — Determines if process x can preempt y without missing its deadline
+* preempt(x) — Returns the index of a process that can preempt x, or -1
+* process_selector() — Selects the next process based on priority (RMS) or earliest deadline (EDF)
+
+---
+
+## 📝 RMS Algorithm
+
+* Priority: Shorter period has higher priority
+* Timer keeps track of current time
+* Process array is sorted by priority
+* Preemption and deadline checks ensure process deadlines are not missed
+* Process selection chooses the highest priority ready process
+
+---
+
+## 📝 EDF Algorithm
+
+* Priority: Earliest deadline has higher priority
+* Timer keeps track of current time
+* Preemption and deadline checks similar to RMS
+* Process selection chooses the ready process with earliest deadline
+
+---
+
+## 📊 Analysis
+
+* RMS may have more deadlines missed when high-period processes are skipped
+* EDF may have more waiting time if it executes long processes near their deadlines
+* Graph analysis shows RMS can outperform EDF in certain scenarios and vice versa depending on process parameters
+
+---
+
+## 🖇️ Notes
+
+* Input parameters can be hardcoded in the program or provided via your own input file
+* RMS and EDF logs/statistics will be generated in the same directory
+* Make sure to compile and execute each program separately
